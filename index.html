@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connecting your TikTok account…</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f0f1a;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #e0e0e0;
+    }
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 48px 56px;
+      text-align: center;
+      max-width: 440px;
+      width: 90%;
+      backdrop-filter: blur(12px);
+    }
+    .icon { font-size: 3rem; margin-bottom: 20px; }
+    h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 10px; }
+    p { font-size: 0.95rem; color: #aaa; line-height: 1.6; }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid rgba(255,255,255,0.1);
+      border-top-color: #6c63ff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 24px auto 0;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .error { color: #ff6b6b; margin-top: 16px; font-size: 0.9rem; display: none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">🔗</div>
+    <h1>Connecting your TikTok account…</h1>
+    <p>Handing off to Post Automator.<br/>You can close this tab once the app opens.</p>
+    <div class="spinner" id="spinner"></div>
+    <p class="error" id="error-msg"></p>
+  </div>
+
+  <script>
+    (function () {
+      // Forward all query params from TikTok's redirect to the desktop app.
+      const params = window.location.search; // e.g. ?code=xxx&state=yyy
+      const deepLink = 'postautomator://callback' + params;
+
+      // Attempt to open the desktop app via custom scheme.
+      window.location.href = deepLink;
+
+      // Fallback: if the app didn't open after 3s, show a helpful message.
+      setTimeout(function () {
+        const err = document.getElementById('error-msg');
+        err.style.display = 'block';
+
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('error')) {
+          err.textContent = 'TikTok returned an error: ' + urlParams.get('error');
+        } else if (!urlParams.get('code')) {
+          err.textContent = 'No authorization code received from TikTok.';
+        } else {
+          err.textContent =
+            'Post Automator did not open automatically. ' +
+            'Make sure the app is running, then try connecting again.';
+        }
+        document.getElementById('spinner').style.display = 'none';
+      }, 3000);
+    })();
+  </script>
+</body>
+</html>
