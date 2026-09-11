@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TikTok Account Connected — Post Automator</title>
+  <title>Account Authorization — Post Automator</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -103,7 +103,7 @@
 <body>
   <div class="card">
     <div class="icon-badge">✨</div>
-    <h1>TikTok Authorization Complete</h1>
+    <h1>Authorization Complete</h1>
     <p class="sub">Click the button below to hand off to Post Automator, or copy your authorization code.</p>
 
     <a id="btn-open-app" href="#" class="btn-open">Open Post Automator</a>
@@ -114,6 +114,10 @@
         <button class="btn-copy" id="btn-copy" onclick="copyCode()">Copy Code</button>
       </div>
       <div class="code-val" id="code-val">Extracting code…</div>
+      <div style="margin-top: 24px; font-size: 0.8rem; color: #64748b;">
+        <a href="terms.html" style="color: #64748b; text-decoration: none; margin-right: 8px;">Terms of Service</a> • 
+        <a href="privacy.html" style="color: #64748b; text-decoration: none; margin-left: 8px;">Privacy Policy</a>
+      </div>
     </div>
 
     <div class="error-box" id="error-box"></div>
