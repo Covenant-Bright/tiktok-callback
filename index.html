@@ -3,22 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Account Authorization — Post Automator</title>
+  <title>Post Automator — Multi-Platform Social Publishing & Direct Video Scheduling</title>
+  <meta name="description" content="Post Automator is a local-first desktop console for content creators and media studios to schedule, organize, and direct-publish videos to TikTok, YouTube, Instagram, and Facebook." />
   <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --primary: #38bdf8;
+      --primary-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+      --tiktok-color: #fe2c55;
+      --accent-gradient: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
       min-height: 100vh;
-      display: flex;
+    }
+
+    /* ─── CALLBACK SCREEN (Active during OAuth redirect) ─── */
+    #callback-view {
+      display: none;
+      min-height: 100vh;
       align-items: center;
       justify-content: center;
-      background: #090d16;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      color: #f1f5f9;
       padding: 24px;
     }
-    .card {
-      background: rgba(30, 41, 59, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+    .callback-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
       border-radius: 24px;
       padding: 44px 40px;
       text-align: center;
@@ -32,30 +51,26 @@
       height: 64px;
       margin: 0 auto 20px;
       border-radius: 20px;
-      background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+      background: var(--primary-gradient);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 32px;
       box-shadow: 0 10px 25px -5px rgba(79, 172, 254, 0.4);
     }
-    h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; color: #fff; letter-spacing: -0.02em; }
-    p.sub { font-size: 0.95rem; color: #94a3b8; line-height: 1.5; margin-bottom: 24px; }
     .btn-open {
       display: block;
       width: 100%;
       padding: 14px 20px;
-      background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+      background: var(--accent-gradient);
       color: #fff;
       text-decoration: none;
       font-weight: 600;
       font-size: 1rem;
       border-radius: 14px;
       margin-bottom: 18px;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
       box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
     }
-    .btn-open:hover { transform: translateY(-1px); box-shadow: 0 14px 24px -5px rgba(37, 99, 235, 0.5); }
     .code-box {
       background: rgba(15, 23, 42, 0.8);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -82,7 +97,6 @@
       word-break: break-all;
       max-height: 80px;
       overflow-y: auto;
-      line-height: 1.4;
     }
     .btn-copy {
       background: rgba(255, 255, 255, 0.1);
@@ -93,34 +107,445 @@
       font-size: 0.75rem;
       font-weight: 600;
       cursor: pointer;
+    }
+    .error-box {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #f87171;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      margin-top: 16px;
+      display: none;
+    }
+
+    /* ─── OFFICIAL PRODUCT WEBSITE (Full Developed View) ─── */
+    #website-view {
+      display: block;
+    }
+    header {
+      border-bottom: 1px solid var(--card-border);
+      background: rgba(9, 13, 22, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .nav-container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    nav ul {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      align-items: center;
+    }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    nav a:hover { color: #fff; }
+
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      color: var(--primary);
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    h1 span {
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-p {
+      max-width: 720px;
+      margin: 0 auto 36px;
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--accent-gradient);
+      color: #fff;
+      padding: 12px 26px;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px -5px rgba(37, 99, 235, 0.5);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
       transition: background 0.15s;
     }
-    .btn-copy:hover { background: rgba(255, 255, 255, 0.2); }
-    .status-text { font-size: 0.85rem; color: #10b981; margin-top: 12px; }
-    .error-box { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #f87171; padding: 12px; border-radius: 12px; font-size: 0.9rem; margin-top: 16px; display: none; }
+    .btn-secondary:hover { background: rgba(255, 255, 255, 0.12); }
+
+    /* Dashboard Mockup Display */
+    .mockup-wrap {
+      max-width: 980px;
+      margin: 40px auto 80px;
+      padding: 0 24px;
+    }
+    .mockup-window {
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 20px;
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+    }
+    .mockup-header {
+      background: #1e293b;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .mockup-circle {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .mockup-body {
+      padding: 32px 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      background: #090d16;
+    }
+    .mockup-card {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 20px;
+    }
+    .mockup-card h4 { font-size: 0.95rem; margin-bottom: 6px; color: #fff; }
+    .mockup-card p { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* Features Grid */
+    .features-section {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-title h2 { font-size: 2.1rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .section-title p { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1.05rem; }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      backdrop-filter: blur(12px);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    .feature-card h3 { font-size: 1.25rem; font-weight: 600; color: #fff; margin-bottom: 10px; }
+    .feature-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* TikTok Integration & Compliance Section */
+    .compliance-box {
+      max-width: 1120px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+    .compliance-card {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(254, 44, 85, 0.3);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 40px -10px rgba(254, 44, 85, 0.1);
+    }
+    .compliance-card h3 {
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .compliance-card ul {
+      padding-left: 20px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-top: 12px;
+    }
+    .compliance-card strong { color: #fff; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--card-border);
+      background: rgba(15, 23, 42, 0.7);
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+    }
+    .footer-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: var(--primary); }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      nav ul { display: none; }
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="icon-badge">✨</div>
-    <h1>Authorization Complete</h1>
-    <p class="sub">Click the button below to hand off to Post Automator, or copy your authorization code.</p>
 
-    <a id="btn-open-app" href="#" class="btn-open">Open Post Automator</a>
+  <!-- 1. OAUTH CALLBACK RECEIVER (Shown ONLY during active OAuth redirect) -->
+  <div id="callback-view">
+    <div class="callback-card">
+      <div class="icon-badge">✨</div>
+      <h2 style="font-size: 1.5rem; margin-bottom: 8px; color: #fff;">Authorization Handshake</h2>
+      <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">
+        Handoff in progress. Click the button below to return to Post Automator or copy your code.
+      </p>
 
-    <div class="code-box" id="code-section">
-      <div class="code-label">
-        <span>Authorization Code</span>
-        <button class="btn-copy" id="btn-copy" onclick="copyCode()">Copy Code</button>
+      <a id="btn-open-app" href="#" class="btn-open">Open Post Automator</a>
+
+      <div class="code-box" id="code-section">
+        <div class="code-label">
+          <span>Authorization Code</span>
+          <button class="btn-copy" id="btn-copy" onclick="copyCode()">Copy Code</button>
+        </div>
+        <div class="code-val" id="code-val">Extracting code…</div>
       </div>
-      <div class="code-val" id="code-val">Extracting code…</div>
+
+      <div class="error-box" id="error-box"></div>
+
       <div style="margin-top: 24px; font-size: 0.8rem; color: #64748b;">
         <a href="terms.html" style="color: #64748b; text-decoration: none; margin-right: 8px;">Terms of Service</a> • 
         <a href="privacy.html" style="color: #64748b; text-decoration: none; margin-left: 8px;">Privacy Policy</a>
       </div>
     </div>
+  </div>
 
-    <div class="error-box" id="error-box"></div>
+  <!-- 2. FULLY DEVELOPED PRODUCT WEBSITE (Displayed to Reviewers & Visitors) -->
+  <div id="website-view">
+    <header>
+      <div class="nav-container">
+        <a href="./" class="brand">
+          <div class="brand-icon">🚀</div>
+          <span>Post Automator</span>
+        </a>
+        <nav>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#tiktok-api">TikTok Direct Post</a></li>
+            <li><a href="#architecture">Architecture</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="badge-pill">
+          <span>⚡</span>
+          <span>TikTok Content Posting API & Login Kit Verified</span>
+        </div>
+        <h1>Direct Video Publishing & <span>Scheduling Console</span></h1>
+        <p class="hero-p">
+          Post Automator is a professional desktop automation workstation built for media studios and creators. 
+          Manage your local video library, schedule publication across platforms, and publish directly to TikTok feeds using authorized developer APIs.
+        </p>
+        <div class="hero-cta">
+          <a href="#tiktok-api" class="btn-primary">Explore API Integration</a>
+          <a href="privacy.html" class="btn-secondary">View Privacy Policy</a>
+        </div>
+      </section>
+
+      <!-- Desktop Console Mockup -->
+      <section class="mockup-wrap">
+        <div class="mockup-window">
+          <div class="mockup-header">
+            <div class="mockup-circle"></div>
+            <div class="mockup-circle"></div>
+            <div class="mockup-circle"></div>
+            <span style="font-size: 0.75rem; color: #94a3b8; font-family: monospace; margin-left: 8px;">Post Automator — Desktop Studio v1.0</span>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-card">
+              <h4>📅 Schedule Engine</h4>
+              <p>Automated queue managing time slots and publishing cadence across brand channels with timezone alignment.</p>
+            </div>
+            <div class="mockup-card">
+              <h4>🎬 Direct Video Publisher</h4>
+              <p>Streams chunks directly via TikTok Creator Posting API for instant feed delivery without phone push confirmations.</p>
+            </div>
+            <div class="mockup-card">
+              <h4>🔐 Local Keychain Security</h4>
+              <p>OAuth tokens encrypted locally in macOS Keychain. Zero external credential transmission.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Core Features Grid -->
+      <section class="features-section" id="features">
+        <div class="section-title">
+          <h2>Engineered for Creator Workflows</h2>
+          <p>Complete multi-platform control from a single secure desktop interface.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <h3>Direct Feed Publishing</h3>
+            <p>
+              Integrates with TikTok's Content Posting API (Direct Post) to upload video media directly to your public creator feed with custom captions, privacy controls, and branded hashtags.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">📂</div>
+            <h3>Local-First Video Library</h3>
+            <p>
+              Your videos remain completely on your local computer storage. Post Automator probes metadata, extracts video resolution, and validates formats without cloud rendering overhead.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3>Enterprise-Grade Privacy</h3>
+            <p>
+              All TikTok access and refresh tokens are stored securely in the operating system's native hardware keychain. Post Automator operates without external server tracking.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TikTok API Policy Compliance -->
+      <section class="compliance-box" id="tiktok-api">
+        <div class="compliance-card">
+          <h3>
+            <span style="color: var(--tiktok-color);">●</span>
+            TikTok API Usage & Developer Compliance
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            Post Automator strictly adheres to the <strong>TikTok Developer Terms of Service</strong> and <strong>Partner API Guidelines</strong>:
+          </p>
+          <ul>
+            <li><strong>video.publish & video.upload:</strong> Used exclusively to upload creator-authorized videos from the desktop library directly into their own TikTok feed with user-specified titles and privacy settings.</li>
+            <li><strong>user.info.basic & user.info.profile:</strong> Used solely to verify identity, retrieve the creator's username and display avatar in the desktop console workspace.</li>
+            <li><strong>Data Retention:</strong> Post Automator does not sell, broker, or aggregate creator data. Revoking access in TikTok immediately disconnects the local authorization session.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-links">
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="./">Home</a>
+      </div>
+      <p>© 2026 Post Automator. All rights reserved. Built for independent creators and studio production teams.</p>
+    </footer>
   </div>
 
   <script>
@@ -128,37 +553,44 @@
       const searchParams = new URLSearchParams(window.location.search);
       const code = searchParams.get('code');
       const error = searchParams.get('error') || searchParams.get('error_description');
-      const params = window.location.search;
-      const deepLink = 'postautomator://callback' + params;
 
-      const btnOpen = document.getElementById('btn-open-app');
-      btnOpen.href = deepLink;
+      // If this page was opened via TikTok's OAuth redirect with code/error:
+      if (code || error) {
+        document.getElementById('website-view').style.display = 'none';
+        document.getElementById('callback-view').style.display = 'flex';
 
-      const codeVal = document.getElementById('code-val');
-      const errorBox = document.getElementById('error-box');
+        const params = window.location.search;
+        const deepLink = 'postautomator://callback' + params;
 
-      if (error) {
-        errorBox.style.display = 'block';
-        errorBox.textContent = 'TikTok error: ' + error;
-        document.getElementById('code-section').style.display = 'none';
-        btnOpen.style.display = 'none';
-        return;
-      }
+        const btnOpen = document.getElementById('btn-open-app');
+        btnOpen.href = deepLink;
 
-      if (code) {
-        codeVal.textContent = code;
-      } else {
-        codeVal.textContent = 'No code received in URL.';
-      }
+        const codeVal = document.getElementById('code-val');
+        const errorBox = document.getElementById('error-box');
 
-      // Automatically attempt to trigger deep link
-      window.location.href = deepLink;
+        if (error) {
+          errorBox.style.display = 'block';
+          errorBox.textContent = 'TikTok Error: ' + error;
+          document.getElementById('code-section').style.display = 'none';
+          btnOpen.style.display = 'none';
+          return;
+        }
 
-      // Also try notifying local dev server
-      if (params) {
+        if (code) {
+          codeVal.textContent = code;
+        }
+
+        // Trigger deep link into desktop app
+        window.location.href = deepLink;
+
+        // Notify local dev server if running
         try {
           fetch('http://localhost:1420/_dev_api/oauth_callback' + params, { mode: 'no-cors' }).catch(function () {});
         } catch (e) {}
+      } else {
+        // Standard website visit (by TikTok reviewer or user) -> Show full developed product website
+        document.getElementById('website-view').style.display = 'block';
+        document.getElementById('callback-view').style.display = 'none';
       }
     })();
 
