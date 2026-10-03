@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Post Automator — Multi-Platform Social Publishing & Direct Video Scheduling</title>
   <meta name="description" content="Post Automator is a local-first desktop console for content creators and media studios to schedule, organize, and direct-publish videos to TikTok, YouTube, Instagram, and Facebook." />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/jpeg" href="app-icon.jpg" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="app-icon.png" />
+  <meta property="og:image" content="https://covenant-bright.github.io/tiktok-callback/app-icon.jpg" />
+  <meta property="og:title" content="Post Automator — Multi-Platform Social Publishing Console" />
+  <meta property="og:description" content="Direct video publishing and desktop scheduling console for TikTok, YouTube, Instagram, and Facebook creators." />
   <style>
     :root {
       --bg: #090d16;
@@ -47,16 +56,21 @@
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }
     .icon-badge {
-      width: 64px;
-      height: 64px;
+      width: 72px;
+      height: 72px;
       margin: 0 auto 20px;
       border-radius: 20px;
-      background: var(--primary-gradient);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 32px;
-      box-shadow: 0 10px 25px -5px rgba(79, 172, 254, 0.4);
+      box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      overflow: hidden;
+    }
+    .icon-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .btn-open {
       display: block;
@@ -150,14 +164,13 @@
       letter-spacing: -0.01em;
     }
     .brand-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: var(--primary-gradient);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: block;
     }
     nav ul {
       display: flex;
@@ -397,7 +410,9 @@
   <!-- 1. OAUTH CALLBACK RECEIVER (Shown ONLY during active OAuth redirect) -->
   <div id="callback-view">
     <div class="callback-card">
-      <div class="icon-badge">✨</div>
+      <div class="icon-badge">
+        <img src="app-icon.png" alt="Post Automator Icon" />
+      </div>
       <h2 style="font-size: 1.5rem; margin-bottom: 8px; color: #fff;">Authorization Handshake</h2>
       <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">
         Handoff in progress. Click the button below to return to Post Automator or copy your code.
@@ -427,7 +442,7 @@
     <header>
       <div class="nav-container">
         <a href="./" class="brand">
-          <div class="brand-icon">🚀</div>
+          <img src="app-icon.png" alt="Post Automator App Icon" class="brand-icon" />
           <span>Post Automator</span>
         </a>
         <nav>
@@ -444,6 +459,9 @@
 
     <main>
       <section class="hero">
+        <div style="display: flex; justify-content: center; margin-bottom: 24px;">
+          <img src="app-icon.png" alt="Post Automator App Icon" style="width: 96px; height: 96px; border-radius: 24px; box-shadow: 0 12px 35px -5px rgba(56, 189, 248, 0.45); border: 2px solid rgba(255, 255, 255, 0.2);" />
+        </div>
         <div class="badge-pill">
           <span>⚡</span>
           <span>TikTok Content Posting API & Login Kit Verified</span>
@@ -539,6 +557,10 @@
     </main>
 
     <footer>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 16px;">
+        <img src="app-icon.png" alt="Post Automator Icon" style="width: 28px; height: 28px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15);" />
+        <span style="font-weight: 600; color: #fff;">Post Automator</span>
+      </div>
       <div class="footer-links">
         <a href="terms.html">Terms of Service</a>
         <a href="privacy.html">Privacy Policy</a>
