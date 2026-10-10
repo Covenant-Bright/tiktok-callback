@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Post Automator</title>
+  <meta name="description" content="Privacy Policy for Post Automator. Learn how we handle your data, TikTok API integration, and credential security.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #09090b;
+      --card-bg: #121215;
+      --card-border: #27272a;
+      --primary: #0284c7;
+      --primary-glow: rgba(2, 132, 199, 0.25);
+      --tiktok: #ff0050;
+      --tiktok-cyan: #00f2fe;
+      --text: #f4f4f5;
+      --text-muted: #a1a1aa;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    header {
+      border-bottom: 1px solid var(--card-border);
+      background: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px var(--primary-glow);
+    }
+    .brand-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: #ffffff;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    nav a {
+      color: var(--text-muted);
+    }
+    nav a:hover {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .legal-content {
+      padding: 64px 0 96px;
+    }
+    .legal-header {
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 28px;
+    }
+    .legal-header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+    .legal-header .meta {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .legal-section {
+      margin-bottom: 40px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 32px;
+    }
+    .legal-section h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .legal-section h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 20px 0 10px;
+      color: #e4e4e7;
+    }
+    .legal-section p {
+      color: #d4d4d8;
+      margin-bottom: 14px;
+    }
+    .legal-section ul, .legal-section ol {
+      margin: 12px 0 18px 24px;
+      color: #d4d4d8;
+    }
+    .legal-section li {
+      margin-bottom: 8px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(2, 132, 199, 0.15);
+      border: 1px solid rgba(2, 132, 199, 0.3);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #38bdf8;
+      margin-bottom: 12px;
+    }
+    .callout {
+      background: rgba(2, 132, 199, 0.08);
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 20px 0;
+      color: #e0f2fe;
+      font-size: 0.95rem;
+    }
+    .callout strong {
+      color: #ffffff;
+    }
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 40px 0;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      background: #09090b;
+    }
+    .footer-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+    }
+    .footer-links a:hover {
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-wrapper">
+      <a href="/" class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24"><path d="M19 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 14H5V8h14v10z"/></svg>
+        </div>
+        <span>Post Automator</span>
+      </a>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/privacy-policy" style="color: #ffffff; font-weight: 600;">Privacy Policy</a>
+        <a href="/terms-of-service">Terms of Service</a>
+        <a href="mailto:covenantbright121@gmail.com">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Legal Main Content -->
+  <main class="container legal-content">
+    <div class="legal-header">
+      <span class="badge">Official Legal Document</span>
+      <h1>Privacy Policy for Post Automator</h1>
+      <div class="meta">
+        <strong>Application Name:</strong> Post Automator &nbsp;|&nbsp;
+        <strong>Last Updated:</strong> October 9, 2026 &nbsp;|&nbsp;
+        <strong>Effective Date:</strong> October 9, 2026 &nbsp;|&nbsp;
+        <strong>Developer/Operator:</strong> Covenant Bright
+      </div>
+    </div>
+
+    <!-- Section 1 -->
+    <section class="legal-section">
+      <h2>1. Introduction & Overview</h2>
+      <p>
+        Welcome to <strong>Post Automator</strong> ("we", "us", "our", or the "Application"). Post Automator is a professional desktop social media scheduling and content publishing console developed and operated by <strong>Covenant Bright</strong> (accessible via our official domain <a href="https://post-automator.pages.dev/">https://post-automator.pages.dev/</a>).
+      </p>
+      <p>
+        We respect your privacy and are committed to protecting any personal data you share with us. This Privacy Policy explains in complete transparency what information Post Automator collects, how that information is used, how it is stored and protected, and how you can exercise full control over your data in accordance with applicable global data privacy regulations, including the European Union General Data Protection Regulation (<strong>GDPR</strong>), the California Consumer Privacy Act (<strong>CCPA</strong>), and the <strong>TikTok Developer Terms of Service</strong>.
+      </p>
+      <div class="callout">
+        <strong>Core Privacy Guarantee:</strong> Post Automator is built on a <em>local-first architecture</em>. We do <strong>not</strong> sell, rent, monetize, or broker your personal information, videos, or account credentials to third parties or advertising networks. Your credentials are encrypted on your local machine.
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="legal-section">
+      <h2>2. Integration with TikTok and Third-Party Platforms</h2>
+      <p>
+        Post Automator integrates with the official <strong>TikTok Content Posting API</strong>, YouTube Data API, Meta Graph API (Instagram & Facebook), and related developer services to facilitate video uploads and social scheduling.
+      </p>
+      <p>
+        When you connect your TikTok account to Post Automator, you are authenticated via TikTok's official OAuth 2.0 authorization dialogue. Post Automator requests only the minimal permissions required to provide content publishing capabilities:
+      </p>
+      <ul>
+        <li><strong>user.info.basic:</strong> Read access to your TikTok user identity (open_id, display name, avatar URL) solely to identify the connected account within the Post Automator dashboard so you can choose which account to publish to.</li>
+        <li><strong>video.upload:</strong> Authorization to upload video files to TikTok's servers on your explicit instruction.</li>
+        <li><strong>video.publish:</strong> Authorization to finalize and publish the video post with your selected caption, privacy setting, and custom video cover frame timestamp.</li>
+      </ul>
+      <p>
+        By using Post Automator with TikTok, you acknowledge that your use of TikTok services is also subject to the <a href="https://www.tiktok.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">TikTok Privacy Policy</a> and <a href="https://www.tiktok.com/legal/terms-of-service" target="_blank" rel="noopener noreferrer">TikTok Terms of Service</a>.
+      </p>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="legal-section">
+      <h2>3. Information We Collect and Process</h2>
+      <h3>A. Information You Explicitly Provide</h3>
+      <ul>
+        <li><strong>Video Files and Media Assets:</strong> Video files, images, and companion thumbnail artwork selected by you from your local storage for scheduling and publishing.</li>
+        <li><strong>Post Metadata:</strong> Titles, descriptions, captions, hashtags, custom cover frame offset timestamps (e.g. <code>video_cover_timestamp_ms</code>), and privacy configurations (Public, Friends, Private).</li>
+        <li><strong>Support Communications:</strong> If you contact us via email (<a href="mailto:covenantbright121@gmail.com">covenantbright121@gmail.com</a>), we receive your email address and message contents to assist you.</li>
+      </ul>
+
+      <h3>B. Information Received from TikTok and Social APIs</h3>
+      <ul>
+        <li><strong>Account Identifiers:</strong> TikTok Open ID, Union ID, creator display name, and avatar image URL.</li>
+        <li><strong>Authentication Tokens:</strong> OAuth 2.0 Access Tokens and Refresh Tokens issued by TikTok upon user authorization.</li>
+        <li><strong>Publishing Status:</strong> Transaction identifiers and post status codes (e.g., upload initialized, processing, publish success or error) provided by TikTok's status query endpoints.</li>
+      </ul>
+
+      <h3>C. Information We DO NOT Collect</h3>
+      <ul>
+        <li>We do <strong>not</strong> collect your TikTok account passwords. All logins occur directly on TikTok's secure authorization domain (<code>tiktok.com</code>).</li>
+        <li>We do <strong>not</strong> collect payment card information, bank account details, or government identification numbers.</li>
+        <li>We do <strong>not</strong> track your browsing history or collect third-party analytics trackers on the Post Automator website.</li>
+      </ul>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="legal-section">
+      <h2>4. How We Use Your Information</h2>
+      <p>We process your data strictly for legitimate operational purposes to provide the requested software functionality:</p>
+      <ol>
+        <li><strong>Executing Video Publishing:</strong> Transmitting your designated video file, cover frame offset, and post caption to the official TikTok Content Posting API endpoints upon your scheduled trigger.</li>
+        <li><strong>Account Management:</strong> Displaying your connected social accounts and channels in the Post Automator user interface.</li>
+        <li><strong>Token Refresh:</strong> Automatically refreshing expired OAuth access tokens using standard OAuth refresh token exchange to prevent service disruption.</li>
+        <li><strong>Cloud Offline Scheduling (Optional):</strong> If you choose the cloud-scheduling feature, scheduling metadata and encrypted credentials are used solely to dispatch the scheduled post to TikTok at the specific date and time requested while your local computer is powered off.</li>
+        <li><strong>Technical Support:</strong> Diagnosing API error responses (e.g., rate limit exceeded, unsupported aspect ratio) and providing user assistance.</li>
+      </ol>
+    </section>
+
+    <!-- Section 5 -->
+    <section class="legal-section">
+      <h2>5. Data Storage, Security & Encryption</h2>
+      <p>
+        Security is fundamental to the architecture of Post Automator:
+      </p>
+      <ul>
+        <li><strong>Local Operating System Keychain:</strong> On your local machine (macOS / Windows), sensitive credentials including OAuth tokens and API secrets are stored using native OS-level secure credential storage (such as Apple Keychain Services) or AES-256 encrypted local SQLite databases.</li>
+        <li><strong>In-Transit Encryption:</strong> All communications between Post Automator and TikTok API endpoints, as well as our Cloudflare edge services, are strictly enforced via modern TLS 1.3 / HTTPS encryption.</li>
+        <li><strong>No Cloud Aggregation:</strong> We do not operate a centralized, unencrypted database storing user social media credentials or private videos.</li>
+      </ul>
+    </section>
+
+    <!-- Section 6 -->
+    <section class="legal-section">
+      <h2>6. Data Retention and Deletion (Your Rights)</h2>
+      <p>
+        You maintain complete control over your data at all times. In compliance with GDPR Article 17 and CCPA deletion standards:
+      </p>
+      <h3>A. Revoking Post Automator Access via TikTok</h3>
+      <p>You can instantly revoke Post Automator's access to your TikTok account at any time directly through the TikTok application:</p>
+      <ol>
+        <li>Open the <strong>TikTok app</strong> on your mobile device.</li>
+        <li>Go to your <strong>Profile</strong> and tap the menu icon (☰) in the top-right corner.</li>
+        <li>Select <strong>Settings and privacy</strong> &gt; <strong>Security & permissions</strong>.</li>
+        <li>Tap <strong>Manage app permissions</strong>.</li>
+        <li>Select <strong>Post Automator</strong> and tap <strong>Remove access</strong>.</li>
+      </ol>
+      <p>Once removed, Post Automator's access tokens are immediately invalidated by TikTok, preventing any further communication with your account.</p>
+
+      <h3>B. Deleting Local and Cloud Data</h3>
+      <p>
+        Within the Post Automator desktop application, disconnecting an account immediately purges all associated tokens and cached metadata from your local Keychain and SQLite storage.
+      </p>
+      <p>
+        To request the deletion of any scheduling jobs, logs, or associated records from our edge servers, you may submit a request by emailing <a href="mailto:covenantbright121@gmail.com">covenantbright121@gmail.com</a> with the subject line <code>"Post Automator Data Deletion Request"</code>. All requests are verified and fulfilled within <strong>24 business hours</strong> free of charge.
+      </p>
+    </section>
+
+    <!-- Section 7 -->
+    <section class="legal-section">
+      <h2>7. Children's Privacy (COPPA Compliance)</h2>
+      <p>
+        Post Automator is designed for content creators and social media professionals. Our software is not directed to individuals under the age of 13 (or under 16 in the European Union). We do not knowingly collect personal information from children. If we become aware that personal data of a minor has been collected without parental consent, we will promptly delete such information.
+      </p>
+    </section>
+
+    <!-- Section 8 -->
+    <section class="legal-section">
+      <h2>8. Changes to This Privacy Policy</h2>
+      <p>
+        We may update this Privacy Policy from time to time to reflect changes in our software features, legal requirements, or platform API policies. Any updates will be published immediately on this page (<a href="https://post-automator.pages.dev/privacy-policy">https://post-automator.pages.dev/privacy-policy</a>) with an updated "Last Updated" date. We encourage you to review this policy periodically.
+      </p>
+    </section>
+
+    <!-- Section 9 -->
+    <section class="legal-section">
+      <h2>9. Contact Information & Legal Inquiries</h2>
+      <p>
+        If you have any questions, concerns, feedback, or data privacy requests regarding this Privacy Policy or Post Automator, please contact the developer directly:
+      </p>
+      <p>
+        <strong>Lead Developer & Operator:</strong> Covenant Bright<br>
+        <strong>Application:</strong> Post Automator<br>
+        <strong>Official Website:</strong> <a href="https://post-automator.pages.dev/">https://post-automator.pages.dev/</a><br>
+        <strong>Support & Legal Inquiries:</strong> <a href="mailto:covenantbright121@gmail.com">covenantbright121@gmail.com</a>
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-wrapper">
+      <div>
+        <p><strong>Post Automator</strong> — Operated by Covenant Bright.</p>
+        <p style="font-size: 0.8rem; margin-top: 4px;">Empowering creators with automated social publishing tools.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms-of-service">Terms of Service</a>
+        <a href="mailto:covenantbright121@gmail.com">Contact Developer</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

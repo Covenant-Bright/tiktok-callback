@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — Post Automator</title>
+  <meta name="description" content="Terms of Service for Post Automator. Read the legal terms governing use of the Post Automator application and publishing tools.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #09090b;
+      --card-bg: #121215;
+      --card-border: #27272a;
+      --primary: #0284c7;
+      --primary-glow: rgba(2, 132, 199, 0.25);
+      --tiktok: #ff0050;
+      --tiktok-cyan: #00f2fe;
+      --text: #f4f4f5;
+      --text-muted: #a1a1aa;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    header {
+      border-bottom: 1px solid var(--card-border);
+      background: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px var(--primary-glow);
+    }
+    .brand-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: #ffffff;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    nav a {
+      color: var(--text-muted);
+    }
+    nav a:hover {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .legal-content {
+      padding: 64px 0 96px;
+    }
+    .legal-header {
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 28px;
+    }
+    .legal-header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+    .legal-header .meta {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .legal-section {
+      margin-bottom: 40px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 32px;
+    }
+    .legal-section h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .legal-section h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 20px 0 10px;
+      color: #e4e4e7;
+    }
+    .legal-section p {
+      color: #d4d4d8;
+      margin-bottom: 14px;
+    }
+    .legal-section ul, .legal-section ol {
+      margin: 12px 0 18px 24px;
+      color: #d4d4d8;
+    }
+    .legal-section li {
+      margin-bottom: 8px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(2, 132, 199, 0.15);
+      border: 1px solid rgba(2, 132, 199, 0.3);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #38bdf8;
+      margin-bottom: 12px;
+    }
+    .callout {
+      background: rgba(2, 132, 199, 0.08);
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 20px 0;
+      color: #e0f2fe;
+      font-size: 0.95rem;
+    }
+    .callout strong {
+      color: #ffffff;
+    }
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 40px 0;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      background: #09090b;
+    }
+    .footer-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+    }
+    .footer-links a:hover {
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-wrapper">
+      <a href="/" class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24"><path d="M19 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 14H5V8h14v10z"/></svg>
+        </div>
+        <span>Post Automator</span>
+      </a>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms-of-service" style="color: #ffffff; font-weight: 600;">Terms of Service</a>
+        <a href="mailto:covenantbright121@gmail.com">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Legal Main Content -->
+  <main class="container legal-content">
+    <div class="legal-header">
+      <span class="badge">Official Legal Agreement</span>
+      <h1>Terms of Service for Post Automator</h1>
+      <div class="meta">
+        <strong>Application Name:</strong> Post Automator &nbsp;|&nbsp;
+        <strong>Last Updated:</strong> October 9, 2026 &nbsp;|&nbsp;
+        <strong>Effective Date:</strong> October 9, 2026 &nbsp;|&nbsp;
+        <strong>Developer/Operator:</strong> Covenant Bright
+      </div>
+    </div>
+
+    <!-- Section 1 -->
+    <section class="legal-section">
+      <h2>1. Agreement to Terms</h2>
+      <p>
+        These Terms of Service ("Terms") constitute a legally binding agreement between you ("User", "you", or "your") and <strong>Covenant Bright</strong>, the developer and operator of <strong>Post Automator</strong> ("we", "us", or "our"), governing your access to and use of the Post Automator desktop application, website (<a href="https://post-automator.pages.dev/">https://post-automator.pages.dev/</a>), and associated cloud services (collectively, the "Service").
+      </p>
+      <p>
+        By downloading, installing, connecting accounts to, or using Post Automator, you confirm that you have read, understood, and agreed to be bound by these Terms and our <a href="/privacy-policy">Privacy Policy</a>. If you do not agree with all of these Terms, you are prohibited from using Post Automator and must discontinue use immediately.
+      </p>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="legal-section">
+      <h2>2. Description of the Service</h2>
+      <p>
+        Post Automator is a social video publishing console built for digital creators, agencies, and businesses. The Service allows users to:
+      </p>
+      <ul>
+        <li>Select, preview, and organize digital video content and companion artwork locally on their computers.</li>
+        <li>Select precise video cover/thumbnail frames down to the millisecond using our built-in Cover Selector Studio.</li>
+        <li>Authenticate social media accounts (including TikTok, YouTube, Instagram, and Facebook) using official OAuth 2.0 developer APIs.</li>
+        <li>Publish and schedule videos directly to connected platforms either locally from their machine or via automated cloud-edge triggers (Cloudflare Workers).</li>
+      </ul>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="legal-section">
+      <h2>3. Third-Party Platform Terms & Compliance</h2>
+      <p>
+        Post Automator connects directly to third-party social media services via their official public APIs. Your use of Post Automator to publish content to these networks requires continuous compliance with each platform's independent terms:
+      </p>
+      <ul>
+        <li><strong>TikTok:</strong> You agree to abide by the <a href="https://www.tiktok.com/legal/terms-of-service" target="_blank" rel="noopener noreferrer">TikTok Terms of Service</a>, <a href="https://www.tiktok.com/community-guidelines" target="_blank" rel="noopener noreferrer">Community Guidelines</a>, and the <a href="https://developers.tiktok.com/doc/terms-of-service" target="_blank" rel="noopener noreferrer">TikTok Developer Terms</a>. You acknowledge that Post Automator utilizes the official TikTok Content Posting API.</li>
+        <li><strong>YouTube:</strong> You agree to be bound by the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube Terms of Service</a> and Google Privacy Policy.</li>
+        <li><strong>Meta (Instagram & Facebook):</strong> You agree to abide by Meta's Platform Terms and Community Standards.</li>
+      </ul>
+      <p>
+        Post Automator does not bypass, alter, or circumvent any platform limitations, rate limits, or safety policies enforced by TikTok or any other platform partner.
+      </p>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="legal-section">
+      <h2>4. User Content & Intellectual Property Ownership</h2>
+      <div class="callout">
+        <strong>100% User Ownership:</strong> You retain complete, unencumbered ownership and all copyright, trademark, and intellectual property rights in and to any videos, audio, images, scripts, captions, and thumbnails you manage or publish with Post Automator.
+      </div>
+      <p>
+        We do <strong>not</strong> claim any ownership or proprietary license over your content. By using Post Automator, you grant us only the strictly limited, technical license necessary to transmit your selected media file and metadata to your authorized social platform API endpoints on your behalf.
+      </p>
+      <p>
+        You represent and warrant that:
+      </p>
+      <ul>
+        <li>You are the creator and owner of the content or have secured all necessary licenses, permissions, and rights to publish the content.</li>
+        <li>Your content does not violate any third-party copyrights, trademarks, privacy rights, publicity rights, or intellectual property rights.</li>
+        <li>Your content complies with the content guidelines of TikTok and any other target social platform.</li>
+      </ul>
+    </section>
+
+    <!-- Section 5 -->
+    <section class="legal-section">
+      <h2>5. Prohibited Uses</h2>
+      <p>You agree not to use Post Automator to:</p>
+      <ol>
+        <li>Publish or distribute any content that is illegal, defamatory, obscene, harassing, hateful, or promotes violence or harm.</li>
+        <li>Distribute unsolicited commercial advertising, bulk spam, misleading metadata, or engage in artificial engagement manipulation prohibited by TikTok Community Guidelines.</li>
+        <li>Attempt to reverse-engineer, decompile, or tamper with the security safeguards or OAuth credential exchange protocols of Post Automator.</li>
+        <li>Impersonate another creator, person, or organization.</li>
+        <li>Interfere with or disrupt the operation of the Cloudflare scheduling worker or any interconnected platform servers.</li>
+      </ol>
+    </section>
+
+    <!-- Section 6 -->
+    <section class="legal-section">
+      <h2>6. Account Credentials & Security</h2>
+      <p>
+        Post Automator stores OAuth access tokens and client secrets inside your operating system's native secure credential storage (such as Apple Keychain) or local encrypted database. You are responsible for maintaining the physical and digital security of your device.
+      </p>
+      <p>
+        If you suspect unauthorized access to your connected social media accounts, you should immediately revoke Post Automator's authorization within your TikTok or platform account settings and disconnect your accounts in the Post Automator console.
+      </p>
+    </section>
+
+    <!-- Section 7 -->
+    <section class="legal-section">
+      <h2>7. Termination and Access Revocation</h2>
+      <p>
+        You may terminate this agreement at any time by stopping all use of Post Automator, deleting the software from your system, and revoking OAuth authorizations within your TikTok account (<strong>Settings and privacy &gt; Security & permissions &gt; Manage app permissions &gt; Post Automator &gt; Remove access</strong>).
+      </p>
+      <p>
+        We reserve the right to suspend or terminate access to our cloud-scheduling infrastructure if you violate these Terms or the platform policies of TikTok.
+      </p>
+    </section>
+
+    <!-- Section 8 -->
+    <section class="legal-section">
+      <h2>8. Disclaimer of Warranties</h2>
+      <p>
+        POST AUTOMATOR IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR UNINTERRUPTED SERVICE.
+      </p>
+      <p>
+        WE DO NOT GUARANTEE THAT SOCIAL PLATFORM APIS (INCLUDING TIKTOK) WILL ALWAYS BE AVAILABLE, UNINTERRUPTED, ERROR-FREE, OR THAT THIRD-PARTY PLATFORMS WILL NOT UPDATE THEIR API SPECIFICATIONS OR POLICIES IN WAYS THAT TEMPORARILY AFFECT FUNCTIONALITY.
+      </p>
+    </section>
+
+    <!-- Section 9 -->
+    <section class="legal-section">
+      <h2>9. Limitation of Liability</h2>
+      <p>
+        TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL COVENANT BRIGHT OR POST AUTOMATOR BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, DATA, USE, GOODWILL, OR CONTENT OPPORTUNITY, ARISING OUT OF OR IN CONNECTION WITH YOUR USE OF OR INABILITY TO USE THE SERVICE OR THIRD-PARTY SOCIAL PLATFORMS.
+      </p>
+    </section>
+
+    <!-- Section 10 -->
+    <section class="legal-section">
+      <h2>10. Modifications to Terms</h2>
+      <p>
+        We may update these Terms from time to time. When changes occur, we will update the "Last Updated" date at the top of this page (<a href="https://post-automator.pages.dev/terms-of-service">https://post-automator.pages.dev/terms-of-service</a>). Continued use of Post Automator after the effective date of revisions constitutes acceptance of the new Terms.
+      </p>
+    </section>
+
+    <!-- Section 11 -->
+    <section class="legal-section">
+      <h2>11. Contact Information</h2>
+      <p>
+        For inquiries regarding these Terms of Service or Post Automator, please contact:
+      </p>
+      <p>
+        <strong>Lead Developer & Operator:</strong> Covenant Bright<br>
+        <strong>Application:</strong> Post Automator<br>
+        <strong>Website:</strong> <a href="https://post-automator.pages.dev/">https://post-automator.pages.dev/</a><br>
+        <strong>Support & Legal:</strong> <a href="mailto:covenantbright121@gmail.com">covenantbright121@gmail.com</a>
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-wrapper">
+      <div>
+        <p><strong>Post Automator</strong> — Operated by Covenant Bright.</p>
+        <p style="font-size: 0.8rem; margin-top: 4px;">Empowering creators with automated social publishing tools.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms-of-service">Terms of Service</a>
+        <a href="mailto:covenantbright121@gmail.com">Contact Developer</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
