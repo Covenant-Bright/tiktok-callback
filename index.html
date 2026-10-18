@@ -586,6 +586,10 @@
 
         const btnOpen = document.getElementById('btn-open-app');
         btnOpen.href = deepLink;
+        btnOpen.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.location.href = deepLink;
+        });
 
         const codeVal = document.getElementById('code-val');
         const errorBox = document.getElementById('error-box');
@@ -603,7 +607,9 @@
         }
 
         // Trigger deep link into desktop app
-        window.location.href = deepLink;
+        setTimeout(function () {
+          window.location.href = deepLink;
+        }, 150);
 
         // Notify local dev server if running
         try {
